@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Program {
 	
@@ -44,30 +45,33 @@ public class Program {
 				nextDistinctNode = nextDistinctNode.next;
 			}
 			currentNode.next = nextDistinctNode;
+			System.out.print(currentNode.value);
 			currentNode = nextDistinctNode;
+			if(currentNode != null) {
+				System.out.print(", ");
+			}
+			
 		}
 		return linkedList;
 	}
 	
-	static void printLinkedList(LinkedList head)
-	{
-	    LinkedList curr = head;
-	    while (curr != null)
-	    {
-	        System.out.print(curr.value + ", ");
-	        curr = curr.next;
-	    }
-	}
+
 	
 
 
 	public static void main(String[] args) {
-		String text = "aabbbbccccdddddddeee";
-		LinkedList head = null;
-		head = stringToLinkedList(text, head);
-		head = removeDuplicates(head);
-		printLinkedList(head);
-
+		Scanner input = new Scanner(System.in);
+		char interested = 'y';
+		while(interested == 'y' || interested == 'Y') {
+			System.out.println("Enter a string: ");
+			String text = input.nextLine();
+			LinkedList head = null;
+			head = stringToLinkedList(text, head);
+			head = removeDuplicates(head);
+			System.out.println("\nWould you be interested in another simulation? "
+					+ "Type y or Y for yes or any other key for no.");
+			interested = input.next().charAt(0);
+		}
 	}
 
 }
